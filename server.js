@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs')
 const fs = require('fs');
 
+const port = process.env.PORT || 3000;
 const app = express();
 
 app.set('view engine', 'hbs');
@@ -27,9 +28,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  res.render('maintenance.hbs');
-});
+// app.use((req, res, next) => {
+//   res.render('maintenance.hbs');
+// });
 
 app.get('/', (req, res) => {
   res.render('home.hbs', {
@@ -44,6 +45,6 @@ app.get('/about', (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log('Listening on port 3000');
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
 });
